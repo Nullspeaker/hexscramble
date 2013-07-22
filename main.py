@@ -1,4 +1,5 @@
-def toHex(a): return "".join("%"+hex(ord(i))[2:] for i in list(a))
+_BANNED=["$","&","+",",","/",":",";","=","?","@","."]
+def toHex(a): return "".join("%"+hex(ord(i))[2:] if not (i in _BANNED) else i for i in list(a))
 while True:
-  INPUT=input().replace("http://","").split("/")
-  print( ("http://"+"/".join([toHex(j) for j in INPUT])).replace("%2e",".") )
+  INPUT=input().replace("http://","")
+  print( ("http://"+"".join([toHex(j) for j in INPUT])) )
